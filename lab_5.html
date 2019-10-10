@@ -267,22 +267,24 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
+	function myFunction(){
     copy = new Array();
-    for(i = 0; i<51; i++){
-      let j = Math.floor(Math.random()*243);
-      copy.push(countries[j])
-    }
-    console.log(copy)
-    lst = [];
-    for(item in copy)
-      {lst.push(copy[item]['name'])}
-    console.log(lst)
-	  for(x = 0; x<51; x++){
-    let instructions = document.querySelector('.instructions');
+  for(i = 0; i<51; i++){
+    let j = Math.floor(Math.random()*243);
+    copy.push(countries[j])
+  }
+  console.log(copy)
+  lst = [];
+  for(item in copy)
+    {lst.push(copy[item]['name'])}
+  console.log(lst)
+    instructions = document.querySelector('.instructions');
+    instructions.innerHTML = '';
+    for(x = 0; x<51; x++){
         let el = document.createElement("li");
         el.innerText = lst[x]
-      instructions.appendChild(el);
-    }
+    instructions.appendChild(el);
+  }
   </script>
 </body>
 
