@@ -33,7 +33,7 @@
   </div>
   <script>
     /* N.B. - For your lab, use the variable "countries" now available on the window space */
-    const countries = [
+     const countries = [
       { "name": "Afghanistan", "code": "AF" },
       { "name": "Åland Islands", "code": "AX" },
       { "name": "Albania", "code": "AL" },
@@ -279,22 +279,22 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     console.log("List of countries in the world", countries);
-  function myFunction() {
-  copy = new Array();
-  for(i = 0; i<51; i++){
+    function myFunction() {
+    copy = new Array();
+    for(i = 0; i<51; i++){
       let j = Math.floor(Math.random()*243);
       copy.push(countries[j])
-  }
-  console.log(copy)
-  lst = [];
-  for(item in copy)
-    {lst.push(copy[item]['name'])}
-  lst
+    }
+    console.log(copy)
+    lst = [];
+    for(item in copy)
+      {lst.push(copy[item]['name'])}
+    lst
 
-  for(two in lst){
-    document.getElementsByTagName("ol").innerHTML = lst
-  }
-
+    for(two in lst){
+      document.getElementsByTagName("ol").innerHTML = lst
+    }
+    }
   </script>
 </body>
 
