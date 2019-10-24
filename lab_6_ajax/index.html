@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">Test AJAX page</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    function loadData() {
+       // What ARE promises? 
+       fetch('ajax_sample.json')
+        .then(arbitrary_variable_name => {
+          console.log(arbitrary_variable_name);
+           return arbitrary_variable_name.json()}) // gotta parse a string into an object! Here's how
+        .then(res => {
+          console.log(res);
+          copy = new Array();
+          for(i = 0; i<15; i++){
+          let j = Math.floor(Math.random()*243);
+          copy.push(res[j])
+          }
+          console.log(copy)
+          lst = [];
+          for(item in copy)
+          {lst.push(copy[item]['name'])}
+          console.log(lst)
+          instructions = document.querySelector('.content');
+          instructions.innerHTML = '';
+          for(x = 0; x<15; x++){
+          let el = document.createElement("li");
+          el.innerText = lst[x]
+          instructions.appendChild(el);
+          }
+          res = instructions;
+      return res; 
+          })
+        .then(res => res) // here we're just passing along res in a shorter format
+        .then(res => res.map(c => c.code)) // // Gotta know what values are available on the response - get this from your API
+        .then(codes => document.querySelector(".content").innerText = codes)
+        .catch((err) => {console.log(err)});
+    }
+  </script>
+</body>
+
+</html>
