@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">UMD Bus Routes</div>
+      <button class="button" onclick="loadData()">Load Some JSON from a server</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    function loadData() {
+      console.log('fetch'); // confirm code is running on click
+      fetch('https://api.umd.io/v0/bus/routes')
+        .then(res => res.json())
+        .then(res => {
+          console.log(res); // logging step to check what we got
+          return res;
+        })
+        .then(res => res.map(c => c.title))
+        .then(res => {
+          function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+          }
+          document.querySelector(".content").innerText = "";
+          instructions = document.querySelector('.content');
+          instructions.innerHTML = '';
+          for(x = 0; x<25; x++){
+          let el = document.createElement("li");
+          el.innerText = res[x]
+          instructions.append(el);
+          console.log(el);
+          }
+          x = getRandomInt(0,25);
+          document.querySelector(".header").innerHTML = "UMD Bus Route "+res[x];
+          console.log(res);
+          res = instructions;
+          return res
+        })  
+    }
+  </script>
+</body>
+
+</html>
