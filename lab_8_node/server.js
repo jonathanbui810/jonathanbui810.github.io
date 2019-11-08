@@ -45,6 +45,7 @@ app.get('/api', (req, res) => {
   const baseURL = 'https://api.umd.io/v0/courses/list';
   fetch(baseURL)
     .then((r) => r.json())
+    .then(data => data.map(c = c.course_id))
     .then(data => {
       let arr = [];
       let x = 0;
@@ -56,8 +57,7 @@ app.get('/api', (req, res) => {
     })
     .then((data) => {
       console.log(data);
-      data.map(c = c.course_id);
-      res.send({ data: data });
+      res.send({ "course_id:": data });
     })
     .catch((err) => {
       console.log(err);
